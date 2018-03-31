@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myapp</title>
+    <title>AVX</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
   </head>
 
   <body>
+    <div id="main-container" class="container">
+      <div class="row">
+        <div id="main-content" class="col-xs-12">
+          <div class="container-fluid" role="navigation">
+            <nav class="navbar navbar-default">
+              <ul class="nav navbar-nav" id="navbar">
+                <li class="navbar active" onclick="handleLiClick()"><%= link_to "Home", root_path %></li>
+                <li class="navbar" onclick="handleLiClick()"><%= link_to 'About', {:action => 'about'} %></li>
+                <li class="navbar" onclick="handleLiClick()"><%= link_to "Works", root_path %></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      <div>
+    </div>
+    <script type="javascript">
+    function handleLiClick() {
+          var current = document.getElementsByClassName("active");
+          console.log(current);
+
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+          console.log(this);
+    }
+    </script>
+
+
     <%= yield %>
+
   </body>
 </html>
